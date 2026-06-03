@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Senescenza e anziano fragile - Riassunto e mappa mentale</title>
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --paper: #ffffff;
+      --text: #252525;
+      --muted: #666;
+      --line: #ddd6cb;
+      --accent: #7b6f5e;
+      --accent2: #e8dfd0;
+      --card: #fffaf2;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    header {
+      background: linear-gradient(135deg, #ffffff, #e8dfd0);
+      border-bottom: 1px solid var(--line);
+      padding: 36px 18px 28px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      color: #3b352d;
+    }
+    header p { margin: 0 auto; max-width: 850px; color: var(--muted); font-size: 1.05rem; }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px;
+      backdrop-filter: blur(8px);
+    }
+    nav a {
+      color: #3b352d;
+      text-decoration: none;
+      background: var(--accent2);
+      border: 1px solid #d7ccbc;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: .95rem;
+    }
+    main { max-width: 1100px; margin: 24px auto 70px; padding: 0 16px; }
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 4vw, 34px);
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-size: clamp(1.45rem, 3vw, 2.05rem);
+      margin: 0 0 20px;
+      color: #3b352d;
+      border-left: 8px solid var(--accent);
+      padding-left: 12px;
+    }
+    h3 {
+      font-size: 1.25rem;
+      margin: 26px 0 10px;
+      color: #4b4237;
+    }
+    h4 { margin: 18px 0 8px; color: #5b5044; }
+    p { margin: 8px 0 12px; }
+    ul { margin-top: 6px; padding-left: 25px; }
+    li { margin: 4px 0; }
+    strong { color: #2d2924; }
+    .intro {
+      background: var(--card);
+      border: 1px solid #eadfcf;
+      padding: 16px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .box {
+      background: var(--card);
+      border: 1px solid #eadfcf;
+      border-radius: 16px;
+      padding: 15px;
+    }
+    .box h3 { margin-top: 0; }
+    .note {
+      border-left: 6px solid #9b8b75;
+      background: #f7efe4;
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    .map-wrap {
+      overflow-x: auto;
+      padding: 12px 0;
+    }
+    .mindmap {
+      min-width: 920px;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+      padding: 20px;
+    }
+    .center-node {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+      justify-self: center;
+      width: 260px;
+      min-height: 160px;
+      border-radius: 26px;
+      background: #6f6252;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 22px;
+      font-size: 1.35rem;
+      font-weight: bold;
+      box-shadow: 0 14px 28px rgba(0,0,0,.18);
+    }
+    .branch-col { display: flex; flex-direction: column; gap: 14px; }
+    .branch {
+      background: #fffaf2;
+      border: 2px solid #ded2c1;
+      border-radius: 18px;
+      padding: 14px 15px;
+      box-shadow: 0 5px 12px rgba(0,0,0,.05);
+    }
+    .branch h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      color: #3b352d;
+    }
+    .branch ul { margin: 0; padding-left: 18px; font-size: .95rem; }
+    .left { grid-column: 1; }
+    .right { grid-column: 3; }
+    details {
+      background: #fffaf2;
+      border: 1px solid #eadfcf;
+      border-radius: 14px;
+      padding: 12px 15px;
+      margin: 10px 0;
+    }
+    summary { cursor: pointer; font-weight: bold; color: #4b4237; }
+    .print-button {
+      display: inline-block;
+      border: 0;
+      background: #6f6252;
+      color: white;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    footer { text-align: center; color: var(--muted); font-size: .9rem; padding: 20px; }
+    @media (max-width: 700px) {
+      section { border-radius: 16px; }
+      nav { position: static; }
+      .mindmap { transform: scale(.92); transform-origin: top left; }
+    }
+    @media print {
+      nav, .print-button { display: none; }
+      body { background: white; }
+      section { box-shadow: none; break-inside: avoid; }
+      .mindmap { min-width: 0; display: block; }
+      .center-node { margin: 0 auto 15px; }
+      .branch-col { display: block; }
+      .branch { margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Senescenza e anziano fragile</h1>
+    <p>Riassunto in italiano livello B, con spiegazioni esplicite e mappa mentale finale.</p>
+    <button class="print-button" onclick="window.print()">Stampa / salva in PDF</button>
+  </header>
+
+  <nav>
+    <a href="#riassunto">Riassunto</a>
+    <a href="#malattie">Malattie</a>
+    <a href="#fragile">Anziano fragile</a>
+    <a href="#mappa">Mappa mentale</a>
+  </nav>
+
+  <main>
+    <section id="riassunto">
+      <h2>Riassunto</h2>
+      <div class="intro">
+        <p>La <strong>senescenza</strong> è il normale processo di invecchiamento della persona. Inizia lentamente già nell'età adulta e continua per tutta la vita.</p>
+        <p>Invecchiare non significa essere malati. Tuttavia, con il passare degli anni il corpo perde gradualmente parte della sua efficienza e diventa più vulnerabile alle malattie.</p>
+        <p>L'invecchiamento interessa tutti gli organi e tutti gli apparati del corpo.</p>
+      </div>
+
+      <h3>Perché si invecchia?</h3>
+      <p>Gli scienziati non conoscono una sola causa dell'invecchiamento. Oggi si pensa che dipenda dall'azione contemporanea di più fattori.</p>
+
+      <div class="grid">
+        <div class="box">
+          <h3>Fattori genetici</h3>
+          <p>Ogni persona eredita dai propri genitori alcune caratteristiche che possono influenzare anche la durata della vita.</p>
+          <p>Secondo questa teoria, le cellule possiedono una specie di <strong>orologio biologico</strong>, cioè un limite naturale alla loro capacità di riprodursi.</p>
+          <p>Quando le cellule non riescono più a dividersi, i tessuti diventano meno efficienti e iniziano a mostrare i segni dell'invecchiamento.</p>
+        </div>
+
+        <div class="box">
+          <h3>Radicali liberi</h3>
+          <p>Durante le normali attività dell'organismo si producono sostanze chiamate <strong>radicali liberi</strong>.</p>
+          <p>Queste sostanze possono danneggiare le cellule e il loro DNA.</p>
+          <p>Nel corso degli anni i danni si accumulano e contribuiscono al deterioramento dei tessuti.</p>
+          <p>Per questo motivo una corretta alimentazione ricca di frutta e verdura è importante, perché contiene sostanze antiossidanti.</p>
+        </div>
+
+        <div class="box">
+          <h3>Sistema immunitario</h3>
+          <p>Con l'età il sistema immunitario diventa meno efficace.</p>
+          <p>Questo significa che l'anziano si ammala più facilmente, impiega più tempo a guarire e può sviluppare infezioni più gravi.</p>
+          <p>Per questo motivo le vaccinazioni sono particolarmente importanti nella popolazione anziana.</p>
+        </div>
+      </div>
+
+      <h3>Come cambia il corpo con l'invecchiamento?</h3>
+
+      <details open>
+        <summary>La pelle</summary>
+        <p>La pelle perde elasticità perché diminuisce la produzione di collagene.</p>
+        <p>Per questo motivo compaiono <strong>rughe</strong>, <strong>macchie senili</strong> e <strong>secchezza cutanea</strong>.</p>
+        <p>Anche i capelli cambiano: diventano bianchi, possono diradarsi e possono cadere più facilmente.</p>
+      </details>
+
+      <details open>
+        <summary>Ossa e muscoli</summary>
+        <p>Con il passare degli anni le ossa perdono calcio e altri minerali. Diventano quindi più fragili e più soggette a fratture.</p>
+        <p>Questa condizione prende il nome di <strong>osteoporosi</strong>.</p>
+        <p>Anche i muscoli perdono volume e forza. L'anziano può camminare più lentamente, stancarsi prima e avere maggiori difficoltà nei movimenti.</p>
+        <p>La riduzione della forza muscolare aumenta il rischio di cadute.</p>
+      </details>
+
+      <details open>
+        <summary>Apparato cardiovascolare</summary>
+        <p>Con l'età le arterie diventano più rigide e meno elastiche. Questo rende più difficile il lavoro del cuore.</p>
+        <p>Può comparire <strong>ipertensione arteriosa</strong>, <strong>aterosclerosi</strong> e <strong>insufficienza cardiaca</strong>.</p>
+        <p>L'aterosclerosi consiste nell'accumulo di grassi e colesterolo nelle pareti delle arterie. Questi depositi restringono il passaggio del sangue e aumentano il rischio di infarto e ictus.</p>
+      </details>
+
+      <details open>
+        <summary>Apparato respiratorio</summary>
+        <p>I polmoni diventano meno elastici e riescono a scambiare meno ossigeno.</p>
+        <p>Per questo motivo molte persone anziane si affaticano più facilmente, hanno il fiato corto e sono più vulnerabili alle infezioni respiratorie.</p>
+      </details>
+
+      <details open>
+        <summary>Sistema nervoso</summary>
+        <p>Con l'invecchiamento alcuni neuroni muoiono e la trasmissione degli impulsi nervosi diventa più lenta.</p>
+        <p>Di conseguenza possono comparire rallentamento dei riflessi, riduzione della memoria e minore capacità di concentrazione.</p>
+        <p>Questi cambiamenti sono normali e non devono essere confusi con le malattie degenerative come l'Alzheimer.</p>
+      </details>
+    </section>
+
+    <section id="malattie">
+      <h2>Principali malattie dell'anziano</h2>
+
+      <h3>Malattie cardiovascolari</h3>
+      <p>Le malattie cardiovascolari sono tra le principali cause di morte nelle persone anziane. Esse colpiscono il cuore, le arterie e le vene.</p>
+
+      <h4>Angina pectoris</h4>
+      <p>L'<strong>angina pectoris</strong> è un dolore al petto causato da una temporanea riduzione dell'apporto di sangue al cuore.</p>
+      <p>Il cuore continua a ricevere sangue, ma in quantità insufficiente.</p>
+      <p>I sintomi più frequenti sono dolore al centro del torace, senso di peso o pressione sul petto, dolore che può estendersi al braccio sinistro o alla mandibola.</p>
+
+      <h4>Infarto miocardico</h4>
+      <p>L'<strong>infarto</strong> si verifica quando una coronaria si chiude completamente.</p>
+      <p>La parte del cuore che non riceve più sangue e ossigeno inizia a morire.</p>
+      <p>I sintomi principali sono forte dolore al petto, sudorazione intensa, nausea, difficoltà respiratoria, paura e agitazione.</p>
+      <div class="note">L'infarto rappresenta un'emergenza medica e richiede un intervento immediato.</div>
+
+      <h3>Ictus</h3>
+      <p>L'<strong>ictus</strong> è una lesione del cervello causata da un problema nella circolazione del sangue.</p>
+      <p>Può essere <strong>ischemico</strong>, quando un vaso sanguigno si ostruisce, oppure <strong>emorragico</strong>, quando un vaso sanguigno si rompe provocando un'emorragia cerebrale.</p>
+      <p>I sintomi possono comparire improvvisamente: difficoltà a parlare, paralisi di un braccio o di una gamba, deviazione della bocca, problemi di vista, perdita di coscienza.</p>
+      <div class="note">In questi casi bisogna chiamare immediatamente il <strong>118</strong>.</div>
+
+      <h3>Polmonite</h3>
+      <p>La <strong>polmonite</strong> è un'infezione dei polmoni.</p>
+      <p>Gli alveoli, che normalmente contengono aria, si riempiono di liquido e pus. Questo rende difficile la respirazione.</p>
+      <p>I sintomi principali sono febbre, tosse, catarro, dolore al petto e affanno.</p>
+      <p>Nelle persone anziane la polmonite può essere particolarmente pericolosa.</p>
+
+      <h3>BPCO</h3>
+      <p>La <strong>Broncopneumopatia Cronica Ostruttiva</strong>, detta BPCO, è una malattia che ostacola il passaggio dell'aria nei polmoni.</p>
+      <p>La causa più frequente è il <strong>fumo di sigaretta</strong>.</p>
+      <p>I sintomi principali sono tosse persistente, catarro, fiato corto e difficoltà respiratoria durante gli sforzi.</p>
+      <p>La malattia tende a peggiorare nel tempo.</p>
+
+      <h3>Enfisema polmonare</h3>
+      <p>L'<strong>enfisema</strong> è una malattia in cui gli alveoli polmonari si danneggiano e perdono elasticità.</p>
+      <p>Di conseguenza l'ossigeno entra con maggiore difficoltà nel sangue.</p>
+      <p>La persona presenta affanno, stanchezza e ridotta capacità di svolgere attività fisiche.</p>
+
+      <h3>Tumore polmonare</h3>
+      <p>Il <strong>tumore polmonare</strong> è una crescita incontrollata di cellule anomale nei polmoni.</p>
+      <p>La causa principale è il fumo di sigaretta.</p>
+      <p>I sintomi possono essere tosse persistente, sangue nell'espettorato, perdita di peso, stanchezza e dolore toracico.</p>
+      <p>La prevenzione più importante consiste nel non fumare.</p>
+
+      <h3>Edentulia e parodontite</h3>
+      <p>L'<strong>edentulia</strong> è la perdita parziale o totale dei denti.</p>
+      <p>Questa condizione può causare difficoltà nella masticazione, difficoltà nel parlare e problemi nutrizionali.</p>
+      <p>La <strong>piorrea</strong>, o <strong>parodontite</strong>, è una malattia che colpisce le gengive e i tessuti che sostengono il dente.</p>
+      <p>All'inizio provoca gengive arrossate e sanguinamento durante lo spazzolamento. Se non viene curata può portare alla perdita dei denti.</p>
+    </section>
+
+    <section id="fragile">
+      <h2>Chi è l'anziano fragile?</h2>
+      <p>L'<strong>anziano fragile</strong> è una persona che possiede una ridotta capacità di reagire agli eventi che possono compromettere il suo stato di salute.</p>
+      <p>Una semplice influenza, una caduta o un ricovero possono provocare conseguenze importanti.</p>
+      <p>L'anziano fragile può presentare perdita di autonomia, difficoltà nei movimenti, presenza di più malattie contemporaneamente e necessità di assistenza continua.</p>
+
+      <div class="grid">
+        <div class="box">
+          <h3>Rischi principali</h3>
+          <ul>
+            <li>Cadute.</li>
+            <li>Perdita di autonomia.</li>
+            <li>Infezioni più gravi.</li>
+            <li>Ricoveri più frequenti.</li>
+            <li>Bisogno di assistenza.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Cosa aiuta la qualità della vita?</h3>
+          <ul>
+            <li>Attività fisica regolare.</li>
+            <li>Alimentazione equilibrata.</li>
+            <li>Relazioni sociali.</li>
+            <li>Controlli medici periodici.</li>
+            <li>Vaccinazioni.</li>
+            <li>Corretta assunzione delle terapie.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="mappa">
+      <h2>Mappa mentale</h2>
+      <p>La mappa mentale mette al centro il tema principale e collega le idee più importanti: cause dell'invecchiamento, cambiamenti del corpo, malattie e fragilità.</p>
+
+      <div class="map-wrap">
+        <div class="mindmap">
+          <div class="branch-col left">
+            <div class="branch">
+              <h3>Perché si invecchia?</h3>
+              <ul>
+                <li>Fattori genetici</li>
+                <li>Orologio biologico</li>
+                <li>Radicali liberi</li>
+                <li>Sistema immunitario meno efficace</li>
+              </ul>
+            </div>
+            <div class="branch">
+              <h3>Cambiamenti del corpo</h3>
+              <ul>
+                <li>Pelle meno elastica</li>
+                <li>Ossa più fragili</li>
+                <li>Muscoli più deboli</li>
+                <li>Riflessi più lenti</li>
+              </ul>
+            </div>
+            <div class="branch">
+              <h3>Apparato respiratorio</h3>
+              <ul>
+                <li>Polmoni meno elastici</li>
+                <li>Fiato corto</li>
+                <li>Più infezioni</li>
+                <li>Polmonite, BPCO, enfisema</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="center-node">SENESCENZA<br>e<br>ANZIANO FRAGILE</div>
+
+          <div class="branch-col right">
+            <div class="branch">
+              <h3>Cuore e circolazione</h3>
+              <ul>
+                <li>Arterie più rigide</li>
+                <li>Ipertensione</li>
+                <li>Aterosclerosi</li>
+                <li>Angina, infarto, ictus</li>
+              </ul>
+            </div>
+            <div class="branch">
+              <h3>Bocca e denti</h3>
+              <ul>
+                <li>Edentulia</li>
+                <li>Difficoltà a masticare</li>
+                <li>Parodontite</li>
+                <li>Possibile uso di protesi</li>
+              </ul>
+            </div>
+            <div class="branch">
+              <h3>Fragilità</h3>
+              <ul>
+                <li>Meno capacità di reagire</li>
+                <li>Più rischio di cadute</li>
+                <li>Perdita di autonomia</li>
+                <li>Bisogno di assistenza</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Materiale di studio semplificato - Senescenza e anziano fragile
+  </footer>
+</body>
+</html>
